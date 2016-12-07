@@ -53,7 +53,30 @@ class DeleteNodeInLL {
 	
 	//This method will delete all key in the List
 	public void deleteAllKey(int data) {
-		
+		Node temp = head;
+		Node prev = null;
+		if(temp == null) {
+			System.out.println("List is Empty.");
+		}
+		//If First Node is matching
+		while(temp != null && temp.data == data) {
+			head = temp.next;
+			temp = head;
+		}
+		//Trace all other index not equal to key
+		while(temp != null) {
+			if(temp.data == data) {
+				prev.next = temp.next; 
+				temp = temp.next;
+			}
+			else {
+				prev = temp;
+				temp = temp.next;
+			}
+			if(temp == null) {
+				return;
+			}
+		}
 	}
 	
 	public static void main(String args[]) {
@@ -61,18 +84,23 @@ class DeleteNodeInLL {
 		Node n1 = new Node(1);
 		Node n2 = new Node(2);
 		Node n3 = new Node(3);
+		Node n4 = new Node(4);
+		Node n5 = new Node(2);
+		Node n6 = new Node(1);
 		head = n1;
 		n1.next = n2;
 		n2.next = n3;
-		System.out.println("=================");
-		System.out.println(head);
-		System.out.println(n1.next);
-		System.out.println(n2.next);
-		System.out.println(n3.next);
+		n3.next = n4;
+		n4.next = n5;
+		n5.next = n6;
+		
 		System.out.println("=================");
 		obj.printList();
 		System.out.println("=================");
 		obj.deleteAtIndex(2);
+		obj.printList();
+		System.out.println("=================");
+		obj.deleteAllKey(4);
 		obj.printList();
 		
 	}
