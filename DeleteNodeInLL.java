@@ -52,7 +52,7 @@ class DeleteNodeInLL {
 	}
 	
 	//This method will delete all key in the List
-	public void deleteAllKey(int data) {
+	public void deleteKey(int data, boolean all ) {
 		Node temp = head;
 		Node prev = null;
 		if(temp == null) {
@@ -68,6 +68,9 @@ class DeleteNodeInLL {
 			if(temp.data == data) {
 				prev.next = temp.next; 
 				temp = temp.next;
+				if(all != true) {
+					break;
+				}
 			}
 			else {
 				prev = temp;
@@ -97,10 +100,10 @@ class DeleteNodeInLL {
 		System.out.println("=================");
 		obj.printList();
 		System.out.println("=================");
-		obj.deleteAtIndex(2);
-		obj.printList();
+		//obj.deleteAtIndex(2);
+		//obj.printList();
 		System.out.println("=================");
-		obj.deleteAllKey(4);
+		obj.deleteKey(2, false);
 		obj.printList();
 		
 	}
